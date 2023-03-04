@@ -39,7 +39,7 @@ const AddBudgetForm = () => {
 						type="number"
 						name="newBudgetAmount"
 						id="newBudgetAmount"
-						step="0.01"
+						step="1"
 						placeholder="e.g., 350 rs."
 						required
 						inputMode="decimal"
