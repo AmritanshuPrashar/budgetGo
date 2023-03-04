@@ -5,6 +5,7 @@ import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 import Intro from "../components/Intro";
+import Table from "../components/Table";
 // Helper functions :
 import { createBudget, createExpense, fetchData, waait } from "../helpers";
 
@@ -13,7 +14,8 @@ import { createBudget, createExpense, fetchData, waait } from "../helpers";
 export function dashBoardLoader() {
 	const userName = fetchData("userName");
 	const budgets = fetchData("budgets");
-	return { userName, budgets };
+	const expenses = fetchData("expenses");
+	return { userName, budgets, expenses };
 }
 
 export async function dashboardAction({ request }) {
@@ -57,7 +59,7 @@ export async function dashboardAction({ request }) {
 }
 
 const Dashboard = () => {
-	const { userName, budgets } = useLoaderData();
+	const { userName, budgets, expenses } = useLoaderData();
 	return (
 		<>
 			{userName ? (
@@ -75,9 +77,15 @@ const Dashboard = () => {
 								<h2>Existing Budgets</h2>
 								<div className="budgets">
 									{budgets.map((budget) => (
-										<BudgetItem key={budget.id} budget={ budget} />
+										<BudgetItem key={budget.id} budget={budget} />
 									))}
 								</div>
+								{expenses && expenses.length > 0 && (
+									<div className="grid-md">
+										<h2>Recent Expenses</h2>
+										<Table expenses={expenses .sort((a,b)=> b.createAt - a.createAt)} />
+									</div>
+								)}
 							</div>
 						) : (
 							<div className="grid-sm">
