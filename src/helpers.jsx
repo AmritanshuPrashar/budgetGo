@@ -13,6 +13,22 @@ export const fetchData = (key) => {
 	return JSON.parse(localStorage.getItem(key));
 };
 
+//Get all items from Local Storage :
+export const getAllMatchingItems = ({ category, key, value }) => {
+	const data = fetchData(category) ?? [];
+	return data.filter((item) => item[key] === value);
+}
+
+//delete item : 
+export const deleteItem = ({ key, id }) => {
+	const existingData = fetchData(key);
+	if (id) {
+		const newData = existingData.filter((item) => item.id !== id);
+		return localStorage.setItem(key, JSON.stringify(newData));
+		return localStorage.removeItem(key);
+	}
+}
+
 //create Budget :
 
 export const createBudget = ({ name, amount }) => {
@@ -47,10 +63,7 @@ export const createExpense = ({ name, amount, budgetId }) => {
 	);
 };
 
-//delete item :
-export const deleteItem = ({ key }) => {
-	return localStorage.removeItem(key);
-};
+
 
 //Total spent by budget :
 

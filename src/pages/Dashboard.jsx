@@ -7,7 +7,13 @@ import BudgetItem from "../components/BudgetItem";
 import Intro from "../components/Intro";
 import Table from "../components/Table";
 // Helper functions :
-import { createBudget, createExpense, fetchData, waait } from "../helpers";
+import {
+	createBudget,
+	createExpense,
+	deleteItem,
+	fetchData,
+	waait,
+} from "../helpers";
 
 // Loader :
 
@@ -56,6 +62,17 @@ export async function dashboardAction({ request }) {
 			throw new Error("There was a problem creating your expense.");
 		}
 	}
+	if (_action === "deleteExpense") {
+		try {
+			deleteItem({
+				key: "expenses",
+				id: values.expenseId,
+			});
+			return toast.success(`Expense deleted!`);
+		} catch (e) {
+			throw new Error("There was a problem deleting your expense.");
+		}
+	}
 }
 
 const Dashboard = () => {
@@ -84,12 +101,15 @@ const Dashboard = () => {
 									<div className="grid-md">
 										<h2>Recent Expenses</h2>
 										<Table
-											expenses={expenses.sort(
-												(a, b) => b.createAt - a.createAt
-											)
-											.slice(0,8)}
+											expenses={expenses
+												.sort((a, b) => b.createAt - a.createAt)
+												.slice(0, 8)}
 										/>
-										{expenses.length > 8 && <Link to="expenses" className="btn btn--dark">View all expenses</Link>}
+										{expenses.length > 8 && (
+											<Link to="expenses" className="btn btn--dark">
+												View all expenses
+											</Link>
+										)}
 									</div>
 								)}
 							</div>
