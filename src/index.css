@@ -620,3 +620,9 @@ table a {
   bottom: -20vh;
   color: white;
 }
+
+@media only screen and (max-width: 1280px) {
+ .main-footer{
+  display: none;
+ }
+}
