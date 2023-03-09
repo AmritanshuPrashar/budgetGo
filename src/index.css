@@ -602,3 +602,21 @@ table a {
 .Toastify__toast-body {
   font-size: var(--fs-300);
 }
+
+
+.navbrand,.nav-cont,.main-footer,.footer-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+}
+.footer{
+  font-size:16px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: +1;
+  left: 40vw;
+  bottom: -20vh;
+  color: white;
+}

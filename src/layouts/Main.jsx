@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 
 // assets
 import wave from "../assets/wave.svg";
+import Footer from "../components/Footer";
 
 // components
 import Nav from "../components/Nav";
@@ -25,7 +26,11 @@ const Main = () => {
       <main>
         <Outlet />
       </main>
+      <>
+      
+      <Footer />
       <img src={wave} alt="" />
+      </>
     </div>
   )
 }
