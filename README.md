@@ -3,7 +3,7 @@
 A budgeting app that helps you manage your money.
 
 
-Try using Web App for free : [BudgetGo :money_with_wings:	](https://budgetgo.amriwtf.me)
+Try using Web App for free : [BudgetGo :money_with_wings:	](https://budgetgo.geekamri.tech)
 
 :warning: Important Instructions :
 ```
